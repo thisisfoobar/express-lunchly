@@ -1,7 +1,15 @@
 /** Database for lunchly */
 
 const pg = require("pg");
-const db = new pg.Client("postgresql:///lunchly");
+// Need to create password file before running
+const password = require("./secretpassword")
+const db = new pg.Client({
+    user: 'thisisfoobar',
+    host: 'localhost',
+    database: 'lunchly',
+    password: password,
+    port: 5432
+});
 
 db.connect();
 
